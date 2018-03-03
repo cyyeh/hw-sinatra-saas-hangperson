@@ -50,17 +50,10 @@ class HangpersonGame
   def check_win_or_lose
     if @wrong_guesses.length >= 7
       return :lose
-    elsif @guesses.chars.sort.join == @word.chars.sort.join
+    elsif @guesses.chars.sort.join == @word.chars.uniq.sort.join
       return :win
     else
       return :play
-    end
-  end
-  
-  # helper function: make several guesses
-  def guess_several_letters(letters)
-    letters.chars do |letter|
-      guess(letter)
     end
   end
 
